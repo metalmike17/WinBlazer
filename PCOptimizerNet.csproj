@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <!-- The Windows 10 SDK version gives access to the clipboard history API. -->
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+    <!-- The folder name is historical. Existing shortcuts and scheduled tasks point to this path, so it is kept. -->
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>bin\$(Configuration)\net8.0-windows\</OutputPath>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms><!-- only for the tray icon -->
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>PCOptimizer</RootNamespace>
+    <AssemblyName>PCOptimizer</AssemblyName>
+    <!-- Stops an environment variable from loading extra code into the app. -->
+    <StartupHookSupport>false</StartupHookSupport>
+    <ApplicationIcon>Assets\WinBlazer.ico</ApplicationIcon>
+    <AssemblyTitle>WinBlazer</AssemblyTitle>
+    <Product>WinBlazer</Product>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.11" />
+    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="3.0.5" />
+  </ItemGroup>
+  <!-- The installed copy is built without the self-test and its commands. -->
+  <PropertyGroup Condition="'$(WithoutSelfTest)' == 'true'">
+    <DefineConstants>$(DefineConstants);NO_SELFTEST</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(WithoutSelfTest)' == 'true'">
+    <Compile Remove="SelfTest.cs;*Tests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Avoid type name clashes between WPF and Windows Forms. -->
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+    <Using Include="System.IO" />
+  </ItemGroup>
+</Project>

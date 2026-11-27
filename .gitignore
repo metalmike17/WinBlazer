@@ -1,0 +1,38 @@
+# Build output (these files can contain your Windows user name and folder paths)
+[Bb]in/
+[Oo]bj/
+publish/
+artifacts/
+
+# Editor and user-specific files
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.rsuser
+
+# Logs, test output and app data (can contain personal file names and settings)
+*.log
+*.log.old
+selftest*/
+TestResults/
+settings.json
+*.jsonl
+*-journal.json
+*-session.json
+*-undo.json
+*Backups/
+*.reg
+*.dmp
+
+# Secrets and packaged downloads
+.env
+*.pfx
+*.snk
+*.zip
+*.nupkg
+
+# Windows
+Thumbs.db
+Desktop.ini
