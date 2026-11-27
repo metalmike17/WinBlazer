@@ -1,8 +1,9 @@
-# WinBlazer
+# WinBlazer (Beta)
 
 A Windows app for cleaning up, checking and adjusting your PC, with backups or undo for many of its changes.
 
-> **Early beta. Use at your own risk.** WinBlazer can permanently delete files and change Windows settings. So far
+> ## ⚠️ BETA: still in testing
+> **This is an early beta. Expect bugs, and use it at your own risk.** WinBlazer can permanently delete files and change Windows settings. So far
 > it has been tested on one PC, running an evaluation edition of Windows 11 IoT Enterprise LTSC. It has not had an
 > independent security audit. **Back up important files before using it.**
 
