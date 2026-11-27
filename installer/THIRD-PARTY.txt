@@ -1,0 +1,26 @@
+Software packaged with WinBlazer
+================================
+
+.NET runtime and Windows Desktop runtime (Microsoft, .NET Foundation and contributors)
+  MIT license. See dotnet-LICENSE.txt, windows-desktop-LICENSE.txt and dotnet-THIRD-PARTY-NOTICES.txt.
+  Some Windows components that come with .NET (such as D3DCompiler_47_cor3.dll and vcruntime140_cor3.dll)
+  are covered by Microsoft's terms. See microsoft-dotnet-library-LICENSE.txt.
+
+Microsoft.Data.Sqlite (Microsoft)
+  MIT license: https://licenses.nuget.org/MIT
+  Copyright (c) Microsoft Corporation. All rights reserved.
+
+Windows SDK .NET projection, Microsoft.Windows.SDK.NET.dll (Microsoft)
+  Windows SDK license terms: https://aka.ms/WinSDKLicenseURL
+  Copyright (c) Microsoft Corporation. All rights reserved.
+
+C#/WinRT runtime, WinRT.Runtime.dll (Microsoft)
+  MIT license: https://licenses.nuget.org/MIT
+  Copyright (c) Microsoft Corporation. All rights reserved.
+
+SQLitePCLRaw (SourceGear, LLC)
+  Apache License 2.0. See Apache-2.0.txt.
+  Copyright 2014-2026 SourceGear, LLC
+
+SQLite, e_sqlite3.dll
+  Public domain: https://sqlite.org/copyright.html

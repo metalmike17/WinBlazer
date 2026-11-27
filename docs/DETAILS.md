@@ -16,12 +16,19 @@ bin\Release\net8.0-windows\PCOptimizer.exe --selftest C:\some\output\folder
 The program file and internal names still say `PCOptimizer`, the app's earlier name, so that saved settings and
 backups keep working.
 
+## Making the download
+`scripts\Build-Release.ps1` builds the installer into `artifacts\release` (needs Inno Setup 6). It leaves out
+debugging data, which records folder paths containing the Windows user name, adds the license notices, and stops if
+the user or computer name is found in the files to be packaged. Pass other words to look for with `-Private`. It
+does not publish anything.
+
 ## Layout
 - `Core/` module discovery, settings, scan scheduler and the safety measures
 - `Modules/` the app's pages
 - `Services/` the work behind each page
 - `Controls/`, `Themes/` shared interface pieces and styling
-- `scripts/` install and uninstall
+- `scripts/` install, uninstall and release build
+- `installer/` the installer's settings and license notices
 ## Adding a module
 Add a class in `Modules/` that implements `IModule`. It appears in the sidebar and on the Settings page
 without edits to existing code. Also implement `IScannableModule` to get a schedule option; its `ScanAsync`

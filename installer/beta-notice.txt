@@ -1,0 +1,12 @@
+BETA: STILL IN TESTING
+
+WinBlazer is an early beta. Expect bugs, and use it at your own risk.
+
+- It can permanently delete files and change Windows settings. Not every change can be undone.
+- It has been tested on one PC, running an evaluation edition of Windows 11 IoT Enterprise LTSC.
+- It has not had an independent security audit.
+- Back up your important files before using it.
+- Read each confirmation. If you are not sure what something does, leave it off.
+
+Details, known issues and how to report problems:
+https://github.com/metalmike17/WinBlazer

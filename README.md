@@ -35,30 +35,43 @@ rarely improves speed.
 Each feature has limits. See [the details](docs/DETAILS.md).
 
 ## Requirements
-- 64-bit Windows 11 or Windows 10. Only the Windows 11 edition named above has been tested.
-- To install: the [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) and an internet connection to
-  download the app's build components. The .NET tools collect usage data by default; Microsoft explains
-  [how to opt out](https://aka.ms/dotnet-cli-telemetry).
+- 64-bit Windows 11, or Windows 10 version 2004 or newer. Only the Windows 11 edition named above has been tested.
 - Administrator permission to install, and for some features.
 - NVIDIA graphics readings and settings need an NVIDIA card.
 
-## Install
-There is no ready-made download yet, so you build the app on your PC.
+## Download and install
+**[Download WinBlazer 0.1.0 beta](https://github.com/metalmike17/WinBlazer/releases/tag/v0.1.0)** and run
+`WinBlazer-0.1.0-beta-Setup.exe`. The .NET files it needs are included.
+
+**The installer is not code-signed.** Windows may show **"Windows protected your PC"** and an unknown publisher, and
+some PCs or security tools may block it. Only run it if you downloaded it from the link above and you trust it. If you
+do, choose **More info**, then **Run anyway**. Do not turn off your antivirus to install it.
+
+To check that your copy matches the published one, run this in PowerShell and compare the result with the SHA-256
+value on the release page:
+```
+Get-FileHash .\WinBlazer-0.1.0-beta-Setup.exe -Algorithm SHA256
+```
+
+The app is installed in `Program Files\WinBlazer` with a Start menu shortcut, and a desktop shortcut if you tick it.
+The program file is named `PCOptimizer.exe`, after the app's earlier name. To update, close WinBlazer and run the
+newer installer.
+
+### Or build it yourself
+This needs the [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) and an internet connection to
+download build components. The .NET tools collect usage data by default; Microsoft explains
+[how to opt out](https://aka.ms/dotnet-cli-telemetry).
 
 1. Download this project (**Code > Download ZIP**) and extract it, or clone it.
 2. Read [`scripts\Install.ps1`](scripts/Install.ps1) if you want to see what it does. Only install code you trust.
-3. Close WinBlazer if it is open.
-4. Open a normal PowerShell window (not as administrator) in the project folder, and run:
+3. In a normal PowerShell window (not as administrator) in the project folder, with WinBlazer closed, run:
    ```
    powershell -ExecutionPolicy Bypass -File scripts\Install.ps1
    ```
    `-ExecutionPolicy Bypass` lets this one run of the script start even if your PC blocks scripts.
-5. Approve the Windows administrator prompt.
+4. Approve the Windows administrator prompt.
 
-The app is installed in `Program Files\WinBlazer`, with Start menu and desktop shortcuts. To update, get the new
-code and run the same command again.
-
-The program file is named `PCOptimizer.exe`, after the app's earlier name.
+Use either the installer or the script, not both.
 
 ## Before you use it
 - **Read each confirmation.** If you are not sure what something does, leave it off.
@@ -136,7 +149,8 @@ them before sharing.
 ## Uninstall
 1. In the app, turn off automatic cleaning and Game Mode, and restore any changes you want to undo.
 2. Close WinBlazer.
-3. In a normal PowerShell window in the project folder, run:
+3. If you used the installer, open Windows **Settings > Apps > Installed apps** and uninstall **WinBlazer (beta)**.
+   If you built it yourself, run this in a normal PowerShell window in the project folder:
    ```
    powershell -ExecutionPolicy Bypass -File scripts\Install.ps1 -Uninstall
    ```
