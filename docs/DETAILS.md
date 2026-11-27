@@ -20,7 +20,8 @@ backups keep working.
 `scripts\Build-Release.ps1` builds the installer into `artifacts\release` (needs Inno Setup 6). It leaves out
 debugging data, which records folder paths containing the Windows user name, adds the license notices, and stops if
 the user or computer name is found in the files to be packaged. Pass other words to look for with `-Private`. It
-does not publish anything.
+then runs `scripts\Make-Portable.ps1`, which zips the same checked files for the portable download. Neither script
+publishes anything. A new version also needs the version numbers, links and checksums in the README updated.
 
 ## Layout
 - `Core/` module discovery, settings, scan scheduler and the safety measures
