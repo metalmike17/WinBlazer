@@ -34,7 +34,21 @@ rarely improves speed.
 | **Registry Cleaner** | Remove certain broken registry entries, after saving a backup |
 | **History** | See a record of what the app has done |
 
-Each feature has limits. See [the details](docs/DETAILS.md).
+Each feature has limits. See [the details](docs/DETAILS.md), the [change history](CHANGELOG.md) and the
+[roadmap](ROADMAP.md).
+
+## Screenshot tour
+These were captured on the test PC by the app's own self-test. The dashboard is at the top of this page.
+
+### Game Mode
+Choose what changes while you play. Game Mode is off in this picture.
+
+![Game Mode page with the choices of what it changes](docs/screenshots/game-mode.png)
+
+### System Tweaks
+Each tweak shows its current state. Many also show a risk label.
+
+![System Tweaks page with switches and risk labels](docs/screenshots/system-tweaks.png)
 
 ## Requirements
 - 64-bit Windows 11, or Windows 10 version 2004 or newer. Only the Windows 11 edition named above has been tested.
@@ -214,7 +228,8 @@ anything.
 - Another program could stop WinBlazer from opening by imitating its check for an already open copy.
 
 ## Reporting problems
-Open an issue on this project with what you did, what you expected, what happened and your Windows version. The app
+[Send a bug report](https://github.com/metalmike17/WinBlazer/issues/new?template=bug_report.yml) with what you did,
+what you expected, what happened and your Windows version. The app
 saves unexpected errors to `crash.log`; check it for personal details before attaching it.
 
 **Security problems:** please do not post the details publicly. Use **Report a vulnerability** on the project's
