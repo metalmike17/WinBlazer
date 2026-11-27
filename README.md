@@ -1,5 +1,7 @@
 # WinBlazer (Beta)
 
+![WinBlazer, beta. Take charge of your Windows PC.](docs/banner.svg)
+
 **Take charge of your Windows PC.** Cleanup, tuning, monitoring and repair tools in one dashboard, with backups or
 undo for many of its changes.
 
