@@ -75,3 +75,5 @@ $hash = (Get-FileHash -LiteralPath $setup -Algorithm SHA256).Hash.ToLowerInvaria
 Set-Content -LiteralPath "$setup.sha256" -Value "$hash  $(Split-Path $setup -Leaf)" -Encoding ascii
 Write-Host "Installer: $setup"
 Write-Host "SHA-256:   $hash"
+
+& (Join-Path $PSScriptRoot 'Make-Portable.ps1') -Version $Version

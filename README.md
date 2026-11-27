@@ -36,12 +36,22 @@ Each feature has limits. See [the details](docs/DETAILS.md).
 
 ## Requirements
 - 64-bit Windows 11, or Windows 10 version 2004 or newer. Only the Windows 11 edition named above has been tested.
-- Administrator permission to install, and for some features.
+- Administrator permission to install (not needed for the portable ZIP), and for some features.
 - NVIDIA graphics readings and settings need an NVIDIA card.
 
 ## Download and install
-**[Download WinBlazer 0.1.0 beta](https://github.com/metalmike17/WinBlazer/releases/tag/v0.1.0)** and run
-`WinBlazer-0.1.0-beta-Setup.exe`. The .NET files it needs are included.
+Choose one way. All downloads are on the
+**[WinBlazer 0.1.0 beta release page](https://github.com/metalmike17/WinBlazer/releases/tag/v0.1.0)**.
+
+| Way | Best for | Administrator features |
+|---|---|---|
+| [1. Installer](#1-installer-recommended) | Most people | Yes |
+| [2. Portable ZIP](#2-portable-zip-no-installation) | Trying it without installing | No |
+| [3. PowerShell](#3-powershell) | Downloading and checking the installer with commands | Yes |
+| [4. Build it yourself](#4-build-it-yourself) | Developers, or running the code you have read | Yes |
+
+### 1. Installer (recommended)
+Download `WinBlazer-0.1.0-beta-Setup.exe` and run it. The .NET files it needs are included.
 
 **The installer is not code-signed.** Windows may show **"Windows protected your PC"** and an unknown publisher, and
 some PCs or security tools may block it. Only run it if you downloaded it from the link above and you trust it. If you
@@ -57,7 +67,40 @@ The app is installed in `Program Files\WinBlazer` with a Start menu shortcut, an
 The program file is named `PCOptimizer.exe`, after the app's earlier name. To update, close WinBlazer and run the
 newer installer.
 
-### Or build it yourself
+### 2. Portable ZIP (no installation)
+1. Download `WinBlazer-0.1.0-beta-portable.zip`.
+2. Extract the whole ZIP to a folder you will keep.
+3. Run `PCOptimizer.exe` inside it. The .NET files it needs are included. It is not code-signed either.
+
+Before choosing this one:
+- **Features that need administrator rights are not available.** Do not use **Run as administrator** on it, because
+  other programs may be able to change the files in its folder.
+- It does not keep everything in its folder. Settings, history and backups go to `%LOCALAPPDATA%\PCOptimizerNet`,
+  shared with an installed copy.
+- If automatic cleaning or Game Mode is on, do not move, rename or delete the folder.
+- The ZIP holds the same app files as the installer, but **starting it from an extracted folder has not been tested.**
+
+SHA-256 of the ZIP:
+```
+a5ecea262ec6788c988f853439716d4c434c14319491451ae22ad5eba5eeb5e0
+```
+
+### 3. PowerShell
+This downloads the same installer into your Downloads folder, and starts it only if it matches the published file.
+Open a normal PowerShell window and paste:
+```powershell
+$file = "$env:USERPROFILE\Downloads\WinBlazer-0.1.0-beta-Setup.exe"
+Invoke-WebRequest "https://github.com/metalmike17/WinBlazer/releases/download/v0.1.0/WinBlazer-0.1.0-beta-Setup.exe" -OutFile $file -UseBasicParsing
+if ((Get-FileHash $file -Algorithm SHA256).Hash -eq "69444d1114fd79e58ab81ce9af63f1e16d45b1823108db14bd09b329ca03555d") {
+    Start-Process $file
+} else {
+    Write-Warning "The file does not match the published one. Do not run it."
+}
+```
+**Windows may not show its "Windows protected your PC" warning for a file downloaded this way.** The installer is
+still not code-signed. A match means you have the published file, not that it is guaranteed safe.
+
+### 4. Build it yourself
 This needs the [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) and an internet connection to
 download build components. The .NET tools collect usage data by default; Microsoft explains
 [how to opt out](https://aka.ms/dotnet-cli-telemetry).
@@ -71,7 +114,7 @@ download build components. The .NET tools collect usage data by default; Microso
    `-ExecutionPolicy Bypass` lets this one run of the script start even if your PC blocks scripts.
 4. Approve the Windows administrator prompt.
 
-Use either the installer or the script, not both.
+The installer (ways 1 and 3) and the build script both install to the same folder, so use only one of them.
 
 ## Before you use it
 - **Read each confirmation.** If you are not sure what something does, leave it off.
@@ -154,6 +197,8 @@ them before sharing.
    ```
    powershell -ExecutionPolicy Bypass -File scripts\Install.ps1 -Uninstall
    ```
+
+For the portable ZIP, delete its folder after steps 1 and 2.
 
 Your settings, logs and backups are kept. Delete the folders above yourself only when you no longer need to restore
 anything.
